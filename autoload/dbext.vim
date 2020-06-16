@@ -131,6 +131,7 @@ function! dbext#DB_buildLists()
     call add(s:conn_params_mv, 'srvname')
     call add(s:conn_params_mv, 'dbname')
     call add(s:conn_params_mv, 'host')
+    call add(s:conn_params_mv, 'socket')
     call add(s:conn_params_mv, 'port')
     call add(s:conn_params_mv, 'extra')
     call add(s:conn_params_mv, 'bin_path')
@@ -151,6 +152,7 @@ function! dbext#DB_buildLists()
     call add(s:saved_conn_params_mv, 'saved_srvname')
     call add(s:saved_conn_params_mv, 'saved_dbname')
     call add(s:saved_conn_params_mv, 'saved_host')
+    call add(s:saved_conn_params_mv, 'saved_socket')
     call add(s:saved_conn_params_mv, 'saved_port')
     call add(s:saved_conn_params_mv, 'saved_extra')
     call add(s:saved_conn_params_mv, 'saved_bin_path')
@@ -3203,6 +3205,7 @@ function! s:DB_MYSQL_execSql(str)
                 \ s:DB_option(' -h ', s:DB_get("host"), '') .
                 \ s:DB_option(' -P ', s:DB_get("port"), '') .
                 \ s:DB_option(' -D ', s:DB_get("dbname"), '') .
+                \ s:DB_option(' --socket ', s:DB_get("socket"), '') .
                 \ s:DB_option(' ', dbext#DB_getWTypeDefault("extra"), '') .
                 \ ' < ' . s:dbext_tempfile
                 " \ s:DB_option(' ', '-t', '') .
